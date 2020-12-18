@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SpawnManager : MonoBehaviour
 {
     public GameObject Trump;
     public GameObject Coronavirus;
     public GameObject Powerup;
+    public TextMeshProUGUI scoreAmount;
 
+    private int score;
     private float zTrumpSpawn = 15.0f;
     private float xSpawnRange = 10.0f;
     private float zPowerupSpawn = 15.0f;
@@ -25,6 +28,9 @@ public class SpawnManager : MonoBehaviour
         InvokeRepeating("SpawnTrump", startDelay, trumpSpawnTime);
         InvokeRepeating("SpawnCoronavirus", startDelay, coronavirusSpawnTime);
         InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
+
+        score = 0;
+        scoreAmount.text = "Score: " + score;
     }
 
     // Update is called once per frame
