@@ -45,37 +45,40 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnTrump()
     {
-        while (activeGame)
-        {
-            float randomX = Random.Range(-xSpawnRange, xSpawnRange);
+        if (activeGame) {
+            {
+                float randomX = Random.Range(-xSpawnRange, xSpawnRange);
 
-            Vector3 spawnPos = new Vector3(randomX, ySpawn, zTrumpSpawn);
+                Vector3 spawnPos = new Vector3(randomX, ySpawn, zTrumpSpawn);
 
-            Instantiate(Trump, spawnPos, Trump.gameObject.transform.rotation);
+                Instantiate(Trump, spawnPos, Trump.gameObject.transform.rotation);
+            }
         }
     }
 
     void SpawnCoronavirus()
     {
-        while (activeGame)
-        {
-            float randomX = Random.Range(-xSpawnRange, xSpawnRange);
+        if (activeGame) {
+            {
+                float randomX = Random.Range(-xSpawnRange, xSpawnRange);
 
-            Vector3 spawnPos = new Vector3(randomX, ySpawn, zCoronavirusSpawn);
+                Vector3 spawnPos = new Vector3(randomX, ySpawn, zCoronavirusSpawn);
 
-            Instantiate(Coronavirus, spawnPos, Coronavirus.gameObject.transform.rotation);
+                Instantiate(Coronavirus, spawnPos, Coronavirus.gameObject.transform.rotation);
+            }
         }
     }
 
     void SpawnPowerup()
     {
-        while (activeGame)
-        {
-            float randomX = Random.Range(-xSpawnRange, xSpawnRange);
+        if (activeGame) {
+            {
+                float randomX = Random.Range(-xSpawnRange, xSpawnRange);
 
-            Vector3 spawnPos = new Vector3(randomX, ySpawn, zPowerupSpawn);
+                Vector3 spawnPos = new Vector3(randomX, ySpawn, zPowerupSpawn);
 
-            Instantiate(Powerup, spawnPos, Powerup.gameObject.transform.rotation);
+                Instantiate(Powerup, spawnPos, Powerup.gameObject.transform.rotation);
+            }
         }
 
     }
