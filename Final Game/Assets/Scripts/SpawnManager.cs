@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class SpawnManager : MonoBehaviour
     public TextMeshProUGUI scoreAmount;
     public TextMeshProUGUI gameOver;
     public bool activeGame;
+    public Button restartButton;
 
     private int score;
     private float zTrumpSpawn = 15.0f;
@@ -91,8 +94,15 @@ public class SpawnManager : MonoBehaviour
 
     public void GameOver()
     {
+        restartButton.gameObject.SetActive(true);
+
         gameOver.gameObject.SetActive(true);
 
         activeGame = false;
+    }
+
+    public void restartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

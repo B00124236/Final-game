@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float pace = 30.0f;
+    private float pace = 40.0f;
     private float zBound = 0.2f;
     private Rigidbody playersRb;
     private Animator playerAnimator;
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Eliminate") || spawnManager.activeGame)
+        if (other.gameObject.CompareTag("Eliminate"))
         {
             Destroy(other.gameObject);
             eParticle.Play();
@@ -83,12 +83,11 @@ public class PlayerController : MonoBehaviour
             spawnManager.AddtoScore(1);
         }
 
-        else if (other.gameObject.CompareTag("lives") || spawnManager.activeGame)
+       else if(other.gameObject.CompareTag("lives") || spawnManager.activeGame)
         {
             Destroy(other.gameObject);
-            playerAudio.PlayOneShot(livesSound, 1.0f);
+            playerAudio.PlayOneShot(livesSound);
             spawnManager.AddtoScore(5);
         }
-
     }
 }

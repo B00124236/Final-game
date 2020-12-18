@@ -109,6 +109,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1193add03f550214596afc01e01b8f00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expParticle: {fileID: 0}
+  eParticle: {fileID: 0}
+  gameOverSound: {fileID: 0}
+  coronaSound: {fileID: 0}
+  livesSound: {fileID: 0}
+  gameOver: 0
 --- !u!54 &5433553781689900640
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -136,8 +142,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.1087427, y: 3.407864, z: 1}
-  m_Center: {x: -0.026896298, y: 1.203932, z: 0}
+  m_Size: {x: 1.731567, y: 3.407864, z: 1}
+  m_Center: {x: -0.005551517, y: 1.203932, z: 0}
 --- !u!1001 &8844347843606858854
 PrefabInstance:
   m_ObjectHideFlags: 0
