@@ -10,12 +10,14 @@ public class SpawnManager : MonoBehaviour
     public GameObject Trump;
     public GameObject Coronavirus;
     public GameObject Powerup;
+    public GameObject Title;
     public TextMeshProUGUI scoreAmount;
     public TextMeshProUGUI gameOver;
     public bool activeGame;
     public Button restartButton;
 
     private int score;
+
     private float zTrumpSpawn = 15.0f;
     private float xSpawnRange = 10.0f;
     private float zPowerupSpawn = 15.0f;
@@ -102,11 +104,13 @@ public class SpawnManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void startGame()
+    public void startGame(int levelofDifficulty)
     {
         activeGame = true;
         score = 0;
-
+        coronavirusSpawnTime /= levelofDifficulty;
         AddtoScore(0);
+
+        Title.gameObject.SetActive(false);
     }
 }
