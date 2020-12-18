@@ -9,6 +9,8 @@ public class SpawnManager : MonoBehaviour
     public GameObject Coronavirus;
     public GameObject Powerup;
     public TextMeshProUGUI scoreAmount;
+    public TextMeshProUGUI gameOver;
+    public bool activeGame;
 
     private int score;
     private float zTrumpSpawn = 15.0f;
@@ -25,12 +27,14 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        activeGame = true;
+        score = 0;
+
         InvokeRepeating("SpawnTrump", startDelay, trumpSpawnTime);
         InvokeRepeating("SpawnCoronavirus", startDelay, coronavirusSpawnTime);
         InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
 
-        score = 0;
-        scoreAmount.text = "Score: " + score;
+        AddtoScore(0);
     }
 
     // Update is called once per frame
@@ -41,28 +45,51 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnTrump()
     {
-        float randomX = Random.Range(-xSpawnRange, xSpawnRange);
-    
-        Vector3 spawnPos = new Vector3(randomX, ySpawn, zTrumpSpawn);
+        while (activeGame)
+        {
+            float randomX = Random.Range(-xSpawnRange, xSpawnRange);
 
-        Instantiate(Trump, spawnPos, Trump.gameObject.transform.rotation);
+            Vector3 spawnPos = new Vector3(randomX, ySpawn, zTrumpSpawn);
+
+            Instantiate(Trump, spawnPos, Trump.gameObject.transform.rotation);
+        }
     }
 
     void SpawnCoronavirus()
     {
-        float randomX = Random.Range(-xSpawnRange, xSpawnRange);
+        while (activeGame)
+        {
+            float randomX = Random.Range(-xSpawnRange, xSpawnRange);
 
-        Vector3 spawnPos = new Vector3(randomX, ySpawn, zCoronavirusSpawn);
+            Vector3 spawnPos = new Vector3(randomX, ySpawn, zCoronavirusSpawn);
 
-        Instantiate(Coronavirus, spawnPos, Coronavirus.gameObject.transform.rotation);
+            Instantiate(Coronavirus, spawnPos, Coronavirus.gameObject.transform.rotation);
+        }
     }
 
     void SpawnPowerup()
     {
-        float randomX = Random.Range(-xSpawnRange, xSpawnRange);
+        while (activeGame)
+        {
+            float randomX = Random.Range(-xSpawnRange, xSpawnRange);
 
-        Vector3 spawnPos = new Vector3(randomX, ySpawn, zPowerupSpawn);
+            Vector3 spawnPos = new Vector3(randomX, ySpawn, zPowerupSpawn);
 
-        Instantiate(Powerup, spawnPos, Powerup.gameObject.transform.rotation);
+            Instantiate(Powerup, spawnPos, Powerup.gameObject.transform.rotation);
+        }
+
+    }
+
+    public void AddtoScore(int scoreUpdate)
+    {
+        score += scoreUpdate;
+        scoreAmount.text = "Score: " + score;
+    }
+
+    public void GameOver()
+    {
+        gameOver.gameObject.SetActive(true);
+
+        activeGame = false;
     }
 }
