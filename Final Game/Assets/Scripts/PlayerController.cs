@@ -8,7 +8,12 @@ public class PlayerController : MonoBehaviour
     private float zBound = 0.2f;
     private Rigidbody playersRb;
     private Animator playerAnimator;
+    private AudioSource playerAudio;
     public ParticleSystem expParticle;
+    public ParticleSystem eParticle;
+    public AudioClip gameOverSound;
+    public AudioClip coronaSound;
+    public AudioClip livesSound;
     public bool gameOver = false;
 
     // Start is called before the first frame update
@@ -16,6 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         playersRb = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -56,6 +62,8 @@ public class PlayerController : MonoBehaviour
             gameOver = true;
             playerAnimator.SetBool("Death_b", true);
             playerAnimator.SetInteger("DeathType_int", 2);
+            expParticle.Play();
+            playerAudio.PlayOneShot(gameOverSound, 1.0f);
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -63,6 +71,13 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Eliminate"))
         {
             Destroy(other.gameObject);
+            eParticle.Play();
+            playerAudio.PlayOneShot(coronaSound, 1.0f);
+        }
+        else if (other.gameObject.CompareTag("lives"))
+        {
+            Destroy(other.gameObject);
+            playerAudio.PlayOneShot(livesSound, 1.0f);
         }
     }
 }

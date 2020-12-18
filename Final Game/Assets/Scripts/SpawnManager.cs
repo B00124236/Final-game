@@ -14,9 +14,9 @@ public class SpawnManager : MonoBehaviour
     private float zCoronavirusSpawn = 15.0f;
     private float ySpawn = 0.75f;
 
-    private float trumpSpawnTime = 3.0f;
+    private float trumpSpawnTime = 5.0f;
     private float coronavirusSpawnTime = 3.0f;
-    private float powerupSpawnTime = 3.0f;
+    private float powerupSpawnTime = 5.0f;
     private float startDelay = 2.0f;
 
     // Start is called before the first frame update
