@@ -26,18 +26,14 @@ public class SpawnManager : MonoBehaviour
     private float coronavirusSpawnTime = 3.0f;
     private float powerupSpawnTime = 5.0f;
     private float startDelay = 2.0f;
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        activeGame = true;
-        score = 0;
-
+       
         InvokeRepeating("SpawnTrump", startDelay, trumpSpawnTime);
         InvokeRepeating("SpawnCoronavirus", startDelay, coronavirusSpawnTime);
         InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
-
-        AddtoScore(0);
     }
 
     // Update is called once per frame
@@ -104,5 +100,13 @@ public class SpawnManager : MonoBehaviour
     public void restartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void startGame()
+    {
+        activeGame = true;
+        score = 0;
+
+        AddtoScore(0);
     }
 }
