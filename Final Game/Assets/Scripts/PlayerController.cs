@@ -7,11 +7,15 @@ public class PlayerController : MonoBehaviour
     private float pace = 30.0f;
     private float zBound = 0.2f;
     private Rigidbody playersRb;
+    private Animator playerAnimator;
+    public ParticleSystem expParticle;
+    public bool gameOver = false;
 
     // Start is called before the first frame update
     void Start()
     {
         playersRb = GetComponent<Rigidbody>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -48,7 +52,10 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Trump"))
         {
-            Debug.Log("Player has hit Trump"); 
+            Debug.Log("Game Over");
+            gameOver = true;
+            playerAnimator.SetBool("Death_b", true);
+            playerAnimator.SetInteger("DeathType_int", 2);
         }
     }
     private void OnTriggerEnter(Collider other)
